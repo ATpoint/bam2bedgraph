@@ -48,4 +48,17 @@ Details: * Option --extend is simply -fs in bedtools genomecov. If --atacseq is 
 
 ```           
 
+**Examples**
+
+- for single-end data, extending reads to fragments of 200bp:
+  `./bam2bedgraph.sh --bams "*.bam" --mode single --extend 200`
+  
+- for ATAC-seq data, reducing reads to cutting sites:
+  `./bam2bedgraph.sh --bams "*.bam" --atacseq` 
+  
+- for ATAC-seq data, smoothing the cutting sites with a 100bp window (=2*50bp):
+  `./bam2bedgraph.sh --bams "*.bam" --atacseq --extend 50` 
+ 
+<br>
+<br>
 Docker image at https://hub.docker.com/r/atpoint/bam2bigwig or use the conda environment at this repo.
