@@ -1,0 +1,15 @@
+name: bam2bedgraph
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bedtools=2.30.0
+  - coreutils
+  - mawk
+  - parallel
+  - samtools=1.13
+  - subread=2.0.1
+  - tabix
+  - ucsc-bedgraphtobigwig
+  

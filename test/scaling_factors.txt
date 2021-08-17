@@ -1,0 +1,2 @@
+sample1_rep1.bam	1
+sample1_rep2.bam	2
