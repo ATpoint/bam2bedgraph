@@ -189,11 +189,6 @@ function Bam2Bw {
   #/ Input is one bam file per sample:
   singlebam="${1}"
   
-  if [[ ! -e "${singlebam}" ]]; then 
-    echo '[ERROR]' "${singlebam}" 'does not exist'
-    exit 1
-  fi  
-  
   Basename=${singlebam%.bam}
   
   #/ Get chromsizes based on idxstats
