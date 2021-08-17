@@ -58,7 +58,19 @@ Details: * Option --extend is simply -fs in bedtools genomecov. If --atacseq is 
   
 - for ATAC-seq data, smoothing the cutting sites with a 100bp window (=2*50bp):  
   `./bam2bedgraph.sh --bams "*.bam" --atacseq --extend 50` 
- 
+  
+If normalization shoudl be done then a file `scaling_factors.txt` must be present like the one below.
+These factors could e.g. be from DESeq2, and should be intended for division of the 4th column of the bedGraph files.
+Sample names must be identical to the bam files. If `--normalize` is set then the script greps the scaling factors per sample
+from this file.
+
+```bash
+Sample	SizeFactors # this line is optional
+sample1_rep1.bam	1.42358748470454
+sample1_rep2.bam	1.1585456869756
+sample1_rep3.bam	0.960513006078968
+```
+
 <br>
 <br>
 Docker image at https://hub.docker.com/r/atpoint/bam2bigwig or use the conda environment at this repo.
