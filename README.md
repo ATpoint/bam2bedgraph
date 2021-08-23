@@ -4,7 +4,7 @@ A simple bash script to convert bam files to bedGraph and bigwig files.
 
 Run bash script without arguments to see options:
 
-```bash
+```markdown
 
 => Options:
    
