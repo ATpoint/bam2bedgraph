@@ -1,5 +1,7 @@
 # bam2bedgraph
 
+[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://hub.docker.com/r/atpoint/bam2bigwig)
+
 A simple bash script to convert bam files to bedGraph and bigwig files.  
 
 Run bash script without arguments to see options:
