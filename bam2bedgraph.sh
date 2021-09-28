@@ -5,7 +5,7 @@
 set -e -o pipefail
 LC_ALL=C
 
-export VERSION=1.0.0
+export VERSION=1.0.1
 
 #/ Help section:
 usage(){
@@ -287,7 +287,7 @@ function AveragebedGraph {
 #-----------------------------------------------
 
 #/ to bedGraph
-echo ${bams} | tr " " "\n" | mawk NF | sort -u | parallel -j "${njobs}" "Bam2Bw {}"
+echo ${bams} | tr " " "\n" | mawk NF | sort -u | parallel --will-cite -j "${njobs}" "Bam2Bw {}"
 
 #/ optionally average if "_rep" nomenclature:
 if [[ "${average}" == "TRUE" ]]; then
@@ -297,7 +297,7 @@ if [[ "${average}" == "TRUE" ]]; then
     else 
         find . -maxdepth 1 -name "*_rep*.bedGraph" \
         | awk -F "_rep" '{print $1 | "sort -u"}' \
-        | parallel -j "${njobs}" "AveragebedGraph {}_rep > {}_averaged.bedGraph"   
+        | parallel --will-cite  -j "${njobs}" "AveragebedGraph {}_rep > {}_averaged.bedGraph"   
 
     fi    
 fi    
@@ -312,6 +312,6 @@ if [[ "${nobigwig}" == "FALSE" ]]; then
         exit 1
     fi   
 
-    ls *.bedGraph | parallel -j "${njobs}" "bedGraphToBigWig {} chromsizes_tobigwig.txt {.}.bigwig"
+    ls *.bedGraph | parallel --will-cite  -j "${njobs}" "bedGraphToBigWig {} chromsizes_tobigwig.txt {.}.bigwig"
 
 fi
