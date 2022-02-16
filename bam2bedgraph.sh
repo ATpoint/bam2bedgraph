@@ -274,6 +274,8 @@ function Bam2Bw {
   bedtools genomecov -bga "${input}" "${csize}" "${do_extend}" "${is_paired}" "${do_scale}" \
   | sort -k1,1 -k2,2n --parallel="${sortthreads}" -S "${sortmem}" > "${Basename}""${suffix}".bedGraph
     
+  export sfx=123
+
 }; export -f Bam2Bw
 
 #/ function for optional averaging:
@@ -290,6 +292,12 @@ function AveragebedGraph {
 echo ${bams} | tr " " "\n" | mawk NF | sort -u | parallel --will-cite -j "${njobs}" "Bam2Bw {}"
 
 #/ optionally average if "_rep" nomenclature:
+if [[ "${extend}" != 0 ]]; then 
+    suffix='_extended'
+else   
+    suffix=''
+fi    
+
 if [[ "${average}" == "TRUE" ]]; then
 
     if [[ $(find . -maxdepth 1 -name "*_rep*" | wc -l) == 0 ]]; then
@@ -297,10 +305,11 @@ if [[ "${average}" == "TRUE" ]]; then
     else 
         find . -maxdepth 1 -name "*_rep*.bedGraph" \
         | awk -F "_rep" '{print $1 | "sort -u"}' \
-        | parallel --will-cite  -j "${njobs}" "AveragebedGraph {}_rep > {}_averaged.bedGraph"   
+        | parallel --will-cite -j "${njobs}" "AveragebedGraph {}_rep > {}${suffix}_averaged.bedGraph"   
 
     fi    
 fi    
+
 
 #/ optionally (by default true) to bigwig
 if [[ "${nobigwig}" == "FALSE" ]]; then
