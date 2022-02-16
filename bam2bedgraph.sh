@@ -5,7 +5,7 @@
 set -e -o pipefail
 LC_ALL=C
 
-export VERSION=1.0.1
+export VERSION=1.1
 
 #/ Help section:
 usage(){
