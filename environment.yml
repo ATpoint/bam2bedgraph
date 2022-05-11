@@ -4,12 +4,12 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - bedtools=2.30.0
+  - bedtools
   - coreutils
   - mawk
   - parallel
-  - samtools=1.13
-  - subread=2.0.1
+  - samtools
+  - subread
   - tabix
   - ucsc-bedgraphtobigwig
   
