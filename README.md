@@ -1,6 +1,6 @@
 # bam2bedgraph
 
-[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://hub.docker.com/r/atpoint/bam2bigwig)
+[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://hub.docker.com/r/atpoint/bam2bedgraph)
 
 A simple bash script to convert bam files to bedGraph and bigwig files.  
 
@@ -75,4 +75,4 @@ sample1_rep3.bam	0.960513006078968
 
 <br>
 <br>
-Docker image at https://hub.docker.com/r/atpoint/bam2bigwig or use the conda environment at this repo.
+Docker image at https://hub.docker.com/r/atpoint/bam2bedgraph or use the conda environment at this repo.
